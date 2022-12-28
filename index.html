@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TODO LIST</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+  <h1 class="home-screen__title">TODO</h1>
+  <div class="home-screen" id="home-screen">
+    <div class="home-screen__overlay"></div>
+    <button class="home-screen__start">START</button>
+  </div>
+  <div class="container">
+    <header class="todo-header">
+      <button class="buttons__delete">DELETE</button>
+      <input class="buttons__input" type="text" placeholder="Task text..." id="text-val">
+      <button class="buttons__add">ADD</button>
+      <p class="todo-header__all-tasks">All: <span id="all">12</span></p>
+      <p class="todo-header__complete-tasks">Completed: <span id="complete"></span></p>
+      <button class="todo-header__show-all">Show All</button>
+      <button class="todo-header__show-completed">Show Completed</button>
+      <input type="text" id="search" class="todo-header__search" name="search" placeholder="Search...">
+      <button class="todo-header__search-btn">S</button>
+    </header>
+    <div class="todo__list">
+    </div>
+  </div>
+  <footer class="footer">&#169 Dinotosu. 2022</footer>
+  <script src="./script.js"></script>
+</body>
+
+</html>

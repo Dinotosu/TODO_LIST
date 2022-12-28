@@ -1,0 +1,366 @@
+:root {
+  --comlete-card-buttons: #9ec7eb;
+  --remove-card-buttons: #fe5f55;
+  --bg-ligth: #f7f7ff;
+  --hover-buttons: #bdd5ea;
+  --delete-button: #faa8a2;
+  --add-button: #577399;
+  --text: #495867;
+  --text-button-lt: #f7f7f7;
+  --text-button-dk: #2e2e2e;
+  --complete: #dce4f0;
+}
+
+.home-screen {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+}
+
+.home-screen__overlay {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  background-color: var(--bg-ligth);
+}
+
+.home-screen__title {
+  width: 50%;
+  height: 320px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 160px;
+  line-height: 320px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  color: var(--text);
+  transition: 1s;
+  cursor: none;
+}
+
+.--title_top {
+  position: relative;
+  top: 80px;
+  font-size: 80px;
+  line-height: 160px;
+  z-index: 1;
+  height: 160px;
+}
+
+.home-screen__start {
+  z-index: 6;
+  border: none;
+  position: absolute;
+  top: 50%;
+  width: 30%;
+  height: 160px;
+  transform: translateY(-50%);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 80px;
+  font-weight: 700;
+  opacity: 0%;
+  transition: 1s;
+  color: var(--text);
+  background-color: var(--bg-ligth);
+}
+
+.home-screen__start:hover {
+  opacity: 100%;
+}
+
+.home-screen__start:active {
+  background-color: var(--hover-buttons);
+}
+
+.translate {
+  top: -100%;
+  transition: 1s;
+}
+
+body {
+  background-color: var(--bg-ligth);
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--hover-buttons);
+  border-radius: 25px;
+  margin-bottom: 20px;
+}
+
+.todo-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 21px;
+  height: 100%;
+  flex-wrap: wrap;
+}
+
+button {
+  background: none;
+  border: none;
+  width: 12%;
+  height: 50px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+button:active {
+  opacity: 0.7;
+}
+
+input {
+  border-radius: 10px;
+  width: 70%;
+  cursor: pointer;
+  border: none;
+  background-color: var(--bg-ligth);
+}
+
+.buttons__delete {
+  background-color: var(--delete-button);
+  color: var(--text-button-lt);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 2em;
+  font-weight: 700;
+}
+
+.buttons__input {
+  background-color: var(--bg-ligth);
+  color: var(--text);
+  width: 70%;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1.2em;
+  line-height: 2.4em;
+}
+
+.buttons__input::placeholder {
+  background-color: var(--bg-ligth);
+  color: var(--text);
+  text-align: center;
+  hyphens: auto;
+  opacity: 0.5;
+  font-weight: 700;
+}
+
+.buttons__add {
+  background-color: var(--add-button);
+  color: var(--text-button-lt);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 2em;
+  font-weight: 700;
+}
+
+.todo-header__all-tasks {
+  color: var(--text);
+  width: 10%;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1.6em;
+  line-height: 2em;
+  cursor: none;
+}
+.todo-header__complete-tasks {
+  color: var(--text);
+  width: 15%;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1.6em;
+  line-height: 2em;
+  cursor: none;
+}
+.todo-header__show-all {
+  background-color: var(--add-button);
+  color: var(--bg-ligth);
+  width: 15%;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1.2em;
+  line-height: 2.4em;
+}
+
+.todo-header__show-all p {
+  width: 100%;
+}
+
+.todo-header__show-completed {
+  background-color: var(--add-button);
+  color: var(--bg-ligth);
+  width: 15%;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1.2em;
+  line-height: 2.4em;
+}
+.todo-header__search {
+  background-color: var(--bg-ligth);
+  color: var(--text);
+  width: 30%;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1.2em;
+  line-height: 2.4em;
+}
+
+.todo-header__search::placeholder {
+  background-color: var(--bg-ligth);
+  color: var(--text);
+  text-align: center;
+  hyphens: auto;
+  opacity: 0.5;
+  font-weight: 700;
+}
+
+.todo-header__search-btn {
+  background-color: var(--add-button);
+  color: var(--bg-ligth);
+  width: 5%;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1.2em;
+  line-height: 2.4em;
+}
+
+.todo__list {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.list-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 60px;
+  background-color: var(--bg-ligth);
+  border-radius: 10px;
+  align-items: center;
+  gap: 5px;
+  z-index: 2;
+  margin-top: 15px;
+}
+
+.complete {
+  background-color: var(--complete);
+  opacity: 0.5;
+  transition: 1s;
+}
+
+.card-button-complete {
+  width: 10%;
+  height: 80%;
+  background-color: var(--comlete-card-buttons);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.2em;
+  line-height: 2.4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-button-complete img {
+  width: 80%;
+  height: 80%;
+}
+
+.card-text-container {
+  width: 55%;
+  height: 80%;
+  overflow: auto;
+  background-color: var(--bg-ligth);
+  border-radius: 10px;
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.2em;
+  line-height: 2.4em;
+  hyphens: auto;
+  color: var(--text);
+}
+
+.card-text-container p {
+  width: 100%;
+  height: fit-content;
+}
+
+.date {
+  background-color: var(--hover-buttons);
+  width: 15%;
+  height: 80%;
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.2em;
+  line-height: 2.4em;
+  border-radius: 10px;
+  order: 2;
+  color: var(--text-button-lt);
+}
+
+.date-remove-card {
+  width: 10%;
+  height: 80%;
+  background-color: var(--remove-card-buttons);
+  order: 5;
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.2em;
+  line-height: 2.4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.date-remove-card img {
+  width: 80%;
+  height: 80%;
+}
+
+.off {
+  display: none;
+}
+
+.dialog {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  border-radius: 10px;
+}
+.dialog__buttons {
+  margin-top: 20px;
+}
+.buttons__yes {
+}
+.buttons__no {
+}
+
+.footer {
+  display: block;
+  z-index: 1;
+  position: relative;
+  top: 90%;
+  height: 2em;
+  width: 20%;
+  left: 50%;
+  text-align: center;
+  transform: translateX(-50%);
+  color: #579099;
+  margin-top: 20px;
+}
