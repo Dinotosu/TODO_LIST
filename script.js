@@ -1,10 +1,3 @@
-/* <div class="list-card">
-  <button class="card-button-complete">V</button>
-  <div class="card-text-container">TEXT</div>
-  <span class="date">19.12.2022</span>
-  <button class="date-remove-card">X</button>
-</div>; */
-
 const startButton = document.querySelector(".home-screen__start");
 
 startButton.addEventListener("click", () => {
@@ -67,7 +60,9 @@ searchBtn.addEventListener("click", () => {
   for (let i = 0; i < cardEl.length; i++) {
     console.log(searchPlace.value);
     console.log(tasksContent[i]);
-    if (tasksContent[i].toLowerCase() != searchPlace.value.toLowerCase()) {
+    if (
+      !tasksContent[i].toLowerCase().includes(searchPlace.value.toLowerCase())
+    ) {
       cardEl[i].style.display = "none";
     } else {
       cardEl[i].style.display = "flex";
@@ -75,24 +70,11 @@ searchBtn.addEventListener("click", () => {
   }
 });
 
-/* const dialog = document.querySelector(".dialog");
-let isDeleteTask = false;
-const dialodYesButton = documen.querySelector(".buttons__yes");
-const dialodNoButton = documen.querySelector(".buttons__no");
-
-dialodYesButton.addEventListener("click", () => {
-  isDeleteTask = true;
-  dialog.close();
-});
-
-dialodNoButton.addEventListener("click", () => {
-  dialog.close();
-}); */
-
 function createNewCard(str, n) {
-  const card = document.createElement("div");
+  const card = document.createElement("li");
   card.classList.add("list-card");
-  card.setAttribute("id", `div-${n}`);
+  card.setAttribute("id", `li-${n}`);
+  card.setAttribute("draggable", `true`);
 
   card.append(cardCompleteButton(n));
   card.append(cardTextTask(str));
@@ -161,11 +143,8 @@ buttonAdd.addEventListener("click", () => {
   todoList.append(createNewCard(textTask.value, count));
 
   tasksContent.push(textTask.value);
-  //console.log(textTask);
-  textTask.value = "";
-  //console.log(textTask);
 
-  //renderTasksLayout();
+  textTask.value = "";
   completeTasks.textContent = completeCheck();
   allTasks.textContent = allTaskSum();
 
@@ -198,7 +177,7 @@ removeButton.addEventListener("click", () => {
 });
 
 function randRemove(n) {
-  let randSelect = document.getElementById(`div-${n}`);
+  let randSelect = document.getElementById(`li-${n}`);
   const cardEl = document.querySelectorAll(".list-card");
   //let che = document.querySelectorAll(".complete");
 
@@ -225,7 +204,7 @@ function randRemove(n) {
 }
 
 function addComplete(n) {
-  const cardCheck = document.getElementById(`div-${n}`);
+  const cardCheck = document.getElementById(`li-${n}`);
 
   cardCheck.classList.toggle("complete");
   completeTasks.textContent = completeCheck();
@@ -263,3 +242,32 @@ function completeCheck() {
 function allTaskSum() {
   return document.querySelectorAll(".list-card").length;
 }
+
+function tasksRotaition() {
+  todoList.addEventListener("dragstart", (evt) => {
+    evt.target.classList.add(`selected`);
+  });
+  todoList.addEventListener(`dragend`, (evt) => {
+    evt.target.classList.remove(`selected`);
+  });
+  todoList.addEventListener("dragover", (evt) => {
+    evt.preventDefault();
+    const activeElement = todoList.querySelector(`.selected`);
+    const currentElement = evt.target;
+    const isMoveable =
+      activeElement !== currentElement &&
+      currentElement.classList.contains(`list-card`);
+
+    if (!isMoveable) {
+      return;
+    }
+    const nextElement =
+      currentElement === activeElement.nextElementSibling
+        ? currentElement.nextElementSibling
+        : currentElement;
+    todoList.insertBefore(activeElement, nextElement);
+  });
+  return todoList;
+}
+
+todoList.append(tasksRotaition());
